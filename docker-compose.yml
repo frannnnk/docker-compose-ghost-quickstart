@@ -1,27 +1,18 @@
 version: '3'
 
 services:
-  nginx:
-    image: nginx:latest
-    container_name: nginx
-    hostname: ghost-nginx
-    ports:
-      - "8443:443"
-    volumes:
-      - ./nginx/ssl/privkey.key:/etc/nginx/privkey.key:ro
-      - ./nginx/ssl/cert.pem:/etc/nginx/cert.pem:ro
-      - ./nginx/conf/ghost.conf:/etc/nginx/conf.d/ghost.conf:z
-    links:
-      - ghost
-    restart: always
-
   ghost:
     image: ghost:latest
     container_name: ghost
     hostname: ghost
+    ports:
+      - "443:443"
     volumes:
       - ./ghost/config.production.json:/var/lib/ghost/config.production.json:z #overwrite default settings
       - ./ghost/content:/var/lib/ghost/content:z
+      - ./nginx/ssl/privkey.key:/etc/nginx/privkey.key:ro
+      - ./nginx/ssl/cert.pem:/etc/nginx/cert.pem:ro
+      - ./nginx/conf/ghost.conf:/etc/nginx/conf.d/ghost.conf:z
     environment: # this section can be commented to start in dev mode by default
       - NODE_ENV=production # set either production or development, then it will load the respective config
     restart: always
