@@ -8,7 +8,7 @@
         "client": "mysql",
         "connection": {
             "host": "mysql",
-            "port": 3306,
+            "port": 3307,
             "user": "ghostusr",
             "password": "ghostusrP@ssword",
             "database": "ghostdata",
