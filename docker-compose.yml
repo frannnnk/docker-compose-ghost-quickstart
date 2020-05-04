@@ -8,7 +8,7 @@ services:
     ports:
       - 8443:443
     volumes:
-      - ./nginx/ssl/privkey.pem:/etc/nginx/privkey.pem:ro
+      - ./nginx/ssl/privkey.key:/etc/nginx/privkey.key:ro
       - ./nginx/ssl/cert.pem:/etc/nginx/cert.pem:ro
       - ./nginx/conf/ghost.conf:/etc/nginx/conf.d/ghost.conf:z
     links:
