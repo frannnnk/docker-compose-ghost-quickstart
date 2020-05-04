@@ -22,25 +22,7 @@ services:
     volumes:
       - ./ghost/config.production.json:/var/lib/ghost/config.production.json:z #overwrite default settings
       - ./ghost/content:/var/lib/ghost/content:z
-    expose:
-    - "3307"
     environment: # this section can be commented to start in dev mode by default
       - NODE_ENV=production # set either production or development, then it will load the respective config
     restart: always
-    links:
-      - mysql
 
-  mysql:
-    image: mysql:latest
-    container_name: mysql
-    volumes:
-       - ./dbdata:/var/lib/mysql:z  # Persist storage
-    expose:
-      - "3307"
-    environment:
-      # Beware of special characters in password that can be interpreted by shell
-      - MYSQL_ROOT_PASSWORD=rootP@ssword
-      - MYSQL_DATABASE=ghostdata
-      - MYSQL_USER=ghostusr
-      - MYSQL_PASSWORD=ghostusrP@ssword
-    restart: always
