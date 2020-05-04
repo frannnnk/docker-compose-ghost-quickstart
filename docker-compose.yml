@@ -6,7 +6,7 @@ services:
     container_name: nginx
     hostname: ghost-nginx
     ports:
-      - 443:443
+      - "8443:443"
     volumes:
       - ./nginx/ssl/privkey.key:/etc/nginx/privkey.key:ro
       - ./nginx/ssl/cert.pem:/etc/nginx/cert.pem:ro
