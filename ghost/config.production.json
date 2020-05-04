@@ -1,5 +1,5 @@
 {
-    "url": "http://gtest.franks.hk",
+    "url": "http://gtest.franks.hk:8080",
     "server": {
         "port": 2368,
         "host": "0.0.0.0"
